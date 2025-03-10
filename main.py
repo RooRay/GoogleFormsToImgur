@@ -150,7 +150,7 @@ def get_form_data(form_id):
         ]
     )
     service = build('forms', 'v1', credentials=credentials)
-    form_data = service.forms().get(formId=form_id).execute()
+    form_data = service.forms().get(formId=form_id).execute() # pylint: disable=no-member
     return form_data
 
 def get_question_map(form_data):
@@ -172,7 +172,7 @@ def get_form_responses(form_id):
         scopes=['https://www.googleapis.com/auth/forms.responses.readonly']
     )
     service = build('forms', 'v1', credentials=credentials)
-    response = service.forms().responses().list(formId=form_id).execute()
+    response = service.forms().responses().list(formId=form_id).execute() # pylint: disable=no-member
     return response.get('responses', [])
 
 def count_responses_per_question(question_map, responses):
