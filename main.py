@@ -5,7 +5,7 @@ import requests
 import numpy as np
 import matplotlib.pyplot as plt
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
