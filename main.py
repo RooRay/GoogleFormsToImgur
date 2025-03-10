@@ -5,17 +5,21 @@ import requests
 import numpy as np
 import matplotlib.pyplot as plt
 
+from dotenv import load_dotenv
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
 # -------------------------------------------------------------------------
 # 1) CONFIGURATION
 # -------------------------------------------------------------------------
-IMGUR_CLIENT_ID = 'CLIENT-ID-HERE' # https://api.imgur.com/oauth2/addclient -> OAuth2 without callback
-IMGUR_CLIENT_SECRET = 'CLIENT-SECRET-HERE' # Use secret generated from above
+load_dotenv() # Load variables from .env file
 
-SERVICE_ACCOUNT_FILE = 'C:/Users/Administrator/Documents/account.json'  # Follow README to make this
-OUTPUT_DIR = 'C:/Users/Administrator/Documents/data'  # Where to temporarily save pie charts locally before they are uploaded
+
+IMGUR_CLIENT_ID = os.getenv("IMGUR_CLIENT_ID")
+IMGUR_CLIENT_SECRET = os.getenv("IMGUR_CLIENT_SECRET")
+
+SERVICE_ACCOUNT_FILE = os.getenv("SERVICE_ACCOUNT_FILE")
+OUTPUT_DIR = os.getenv("OUTPUT_DIR", "./output")  # Default fallback for OUTPUT_DIR
 
 # -------------------------------------------------------------------------
 # 2) IMGUR OAUTH2 (PIN FLOW)
